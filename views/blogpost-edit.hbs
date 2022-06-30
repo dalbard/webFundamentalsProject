@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Blogpost</title>
+</head>
+
+<body>
+    <h1>Edit blogpost</h1>
+
+    {{#if validationErrors.length}}
+    <p>Errors:</p>
+    <ul>
+        {{#each validationErrors}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    <form action="/blogpost/edit/{{blogpost.id}}" method="POST">
+        <fieldset>
+            <label for="title">Title</label><br>
+            <input type="text" id="input-title" name="title" value="{{blogpost.title}}" placeholder="Title"
+                class="form-input" /><br>
+            <label for="content">Content</label><br>
+            <textarea name="content" id="input-content" class="form-input" type="text" cols="30"
+                rows="10">{{blogpost.content}}</textarea><br><br>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button class="btn btn-primary" type="submit">Edit Post</button>
+        </fieldset>
+    </form>
+</body>

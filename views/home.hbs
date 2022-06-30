@@ -1,0 +1,13 @@
+<head>
+    <link rel="stylesheet" href="home.css">
+</head>
+<header>
+    <h1 class="display-1">Dalbard</h1>
+    <p>Welcome to the personal website of Axel Dalbard.</p>
+    {{#if isLoggedIn}}
+    <form action="/logout" method="POST">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}">
+        <input type="submit" value="Log out" class="btn btn-primary">
+    </form>
+    {{/if}}
+</header>

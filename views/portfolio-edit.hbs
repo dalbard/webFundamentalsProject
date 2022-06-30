@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Portfolio Entry</title>
+</head>
+
+<body>
+    <h1>Edit Portfolio Entry</h1>
+
+    {{#if validationErrors.length}}
+    <p>Errors:</p>
+    <ul>
+        {{#each validationErrors}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    <form action="/portfolio/edit/{{portfolio.id}}" method="POST">
+        <fieldset>
+            <label for="title">Title</label><br>
+            <input type="text" id="input-title" name="title" value="{{portfolio.title}}" placeholder="Title"
+                class="form-input" /><br>
+            <label for="projectLink">Projekt link</label><br>
+            <textarea name="projectLink" id="input-projectLink" class="form-input" type="text" cols="30"
+                rows="10">{{portfolio.projectLink}}</textarea><br><br>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input type="submit" value="Post Entry" class="btn btn-primary">
+        </fieldset>
+    </form>
+</body>

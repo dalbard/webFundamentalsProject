@@ -1,0 +1,35 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Log in</h5>
+            <form class="form-signin" action="/login" method="POST">
+              <div class="form-label-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Username" value="{{username}}" required autofocus>
+              </div>
+              <div class="form-label-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+              </div>
+              <br>
+              <input type="hidden" name="_csrf" value="{{csrfToken}}">
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value="Login">Log
+                in</button>
+              <hr class="my-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

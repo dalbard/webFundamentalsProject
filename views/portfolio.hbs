@@ -1,0 +1,42 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <h1 class="my-4">Portfolio</h1>
+        {{#if isLoggedIn}}
+        <div class="container" id="container">
+            <div class="jumbotron" id="jumbotron">
+                <h1 class="display-4">Create a portfolio entry</h1>
+                <hr class="my-4">
+                <a class="btn btn-primary btn-lg" href="/portfolio/create" role="button">Create</a>
+            </div>
+            {{/if}}
+            {{#each portfolio}}
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">
+                            <a href="{{projectLink}}" target="_blank">Link to project</a>
+                        </p>
+                        <div class="card-footer">
+                            <small class="text-muted">Posted on, {{datePosted}}</small><br>
+                            <a href="/portfolio/{{id}}" class="btn btn-primary">Read More</a>
+                            {{#if ../isLoggedIn}}
+                            <a href="/portfolio/edit/{{id}}" class="btn btn-secondary">Edit</a>
+                            <form action="/portfolio/delete/{{id}}" method="POST">
+                                <input type="submit" value="Delete" class="btn btn-secondary">
+                            </form>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+</body>

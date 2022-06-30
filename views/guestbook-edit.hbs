@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Guestbook Post</title>
+</head>
+
+<body>
+    <h1>Edit a Guestbook Post</h1>
+
+    {{#if validationErrors.length}}
+    <p>Errors:</p>
+    <ul>
+        {{#each validationErrors}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    <form action="/guestbook/edit/{{guestbook.id}}" method="POST">
+        <fieldset>
+            <label for="title">Name</label><br>
+            <input type="text" id="input-name" name="name" value="{{guestbook.name}}" placeholder="Name"
+                class="form-input" /><br>
+            <label for="content">Message</label><br>
+            <textarea name="message" id="input-message" class="form-input" type="text" cols="30"
+                rows="10">{{guestbook.message}}</textarea><br><br>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input type="submit" value="Edit Post" class="btn btn-primary">
+        </fieldset>
+    </form>
+</body>

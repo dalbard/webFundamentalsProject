@@ -1,0 +1,14 @@
+#contactPic{
+    border-radius: 50%;
+    width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#nameIcon{
+    padding-top: 100px;
+}
+
+#phoneIcon{
+    padding-bottom: 100px;
+}

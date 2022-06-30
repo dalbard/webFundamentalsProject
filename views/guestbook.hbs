@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guestbook</title>
+    <link rel="stylesheet" href="guestbook.css">
+</head>
+
+<body>
+    <div class="container" id="container">
+        <h1>Guestbook</h1>
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-4">Create your own guestbook post!</h1>
+            <p class="lead">If you want to write a message or simply just check in, please click the button down below.
+            </p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="/guestbook/create" role="button">Create Post</a>
+        </div>
+        <h2>Guestbook Posts</h2>
+        {{#each guestbook}}
+        <div class="jumbotron" id="jumbotron">
+            <h1 class="display-4">{{name}}</h1>
+            <p class="lead">{{message}}</p>
+            <hr class="my-4">
+            <p>Posted on, {{datePosted}}</p>
+            <a class="btn btn-primary btn-lg" href="/guestbook/{{id}}" role="button">Read More</a>
+            {{#if ../isLoggedIn}}
+            <a href="/guestbook/edit/{{id}}" class="btn btn-secondary">Edit</a>
+            <form action="/guestbook/delete/{{id}}" method="POST">
+                <input type="submit" value="Delete" class="btn btn-secondary">
+            </form>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+</body>

@@ -1,0 +1,48 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blogpost</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+
+        <h1 class="my-4">Blogpost
+        </h1>
+
+        {{#if isLoggedIn}}
+        <div class="container" id="container">
+          <div class="jumbotron" id="jumbotron">
+            <h1 class="display-4">Create a blogpost</h1>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="/blogpost/create" role="button">Create</a>
+          </div>
+          {{/if}}
+          {{#each blogpost}}
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title">{{title}}</h2>
+              <p class="card-text">{{content}}</p>
+              <a href="/blogpost/{{id}}" class="btn btn-primary">Read More</a>
+              {{#if ../isLoggedIn}}
+              <a href="/blogpost/edit/{{id}}" class="btn btn-secondary">Edit</a>
+              <form action="/blogpost/delete/{{id}}" method="POST">
+                <input type="submit" value="Delete" class="btn btn-secondary">
+              </form>
+              {{/if}}
+            </div>
+            <div class="card-footer text-muted">
+              Posted on, {{datePosted}} by
+              <a href="/about">Dalbard</a>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+</body>

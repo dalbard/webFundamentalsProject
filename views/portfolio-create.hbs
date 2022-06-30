@@ -1,0 +1,34 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Portfolio Entry</title>
+</head>
+
+<body>
+    <h1>Create a Portfolio Entry</h1>
+
+    {{#if validationErrors.length}}
+    <p>Errors:</p>
+    <ul>
+        {{#each validationErrors}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+    <form action="/portfolio/create" method="POST">
+        <fieldset>
+            <label for="title">Title</label><br>
+            <input type="text" id="input-title" name="title" value="{{title}}" placeholder="Title"
+                class="form-input" /><br><br>
+            <label for="projectLink">Project link</label><br>
+            <textarea name="projectLink" id="input-projectLink" text="{{projectLink}}" class="form-input" type="text"
+                cols="30" rows="10"></textarea>
+            <br>
+            <br>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input type="submit" value="Post Entry" class="btn btn-primary">
+        </fieldset>
+    </form>
+</body>

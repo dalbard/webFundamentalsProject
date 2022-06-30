@@ -1,0 +1,14 @@
+body {
+    background-image: url('websitepicture.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+}
+
+header{
+    padding-top: 15em;
+    padding-bottom: 30em;
+    color: white;
+}
